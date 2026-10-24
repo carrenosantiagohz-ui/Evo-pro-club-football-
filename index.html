@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a12">
+  <meta name="description" content="EVO PRO CLUB — fútbol, competición y comunidad en FUT Roblox.">
+  <title>EVO PRO CLUB | FUT</title>
+  <style>
+    :root {
+      --bg: #070a12; --panel: #101626; --panel2: #0c1220;
+      --blue: #4b6bff; --cyan: #48d9ff; --text: #f4f7ff;
+      --muted: #a8b3cc; --line: rgba(124,151,255,.23);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text);
+      background: radial-gradient(ellipse at 75% 0%, #15245a 0%, transparent 42%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, 92%); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: rgba(7,10,18,.84); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 70px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.08em; }
+    .crest { width:40px; height:44px; display:grid; place-items:center; clip-path: polygon(50% 0, 95% 17%, 88% 72%, 50% 100%, 12% 72%, 5% 17%); background: linear-gradient(145deg,var(--cyan),var(--blue)); color:#080d1b; font-weight:1000; font-size:20px; }
+    .navlinks { display:flex; gap:20px; align-items:center; font-size:14px; color:var(--muted); }
+    .navlinks a:hover { color:white; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:13px 18px; border-radius:12px; background:linear-gradient(100deg,var(--blue),#714bff); color:white; font-weight:800; border:1px solid rgba(255,255,255,.15); box-shadow:0 8px 28px rgba(75,107,255,.24); transition:transform .15s, filter .15s; }
+    .btn:hover { transform:translateY(-2px); filter:brightness(1.1); }
+    .btn.secondary { background:#111a2d; box-shadow:none; border-color:var(--line); }
+    .hero { padding:78px 0 58px; }
+    .hero-grid { display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:35px; }
+    .eyebrow { color:var(--cyan); font-size:12px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; }
+    h1 { margin:12px 0 16px; font-size:clamp(42px,7vw,78px); line-height:.98; letter-spacing:-.055em; }
+    h1 span { display:block; color:var(--cyan); text-shadow:0 0 30px rgba(72,217,255,.18); }
+    .lead { max-width:600px; color:var(--muted); font-size:18px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
+    .hero-card { min-height:330px; border:1px solid var(--line); border-radius:24px; padding:25px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; position:relative; background:linear-gradient(145deg,rgba(30,48,104,.78),rgba(10,15,29,.96) 62%); box-shadow:0 24px 70px rgba(0,0,0,.24); }
+    .hero-card:before { content:""; position:absolute; width:260px;height:260px;border:1px solid rgba(72,217,255,.25); border-radius:50%; right:-70px; top:-50px; box-shadow:0 0 0 22px rgba(72,217,255,.035),0 0 0 48px rgba(72,217,255,.025); }
+    .big-crest { position:relative; z-index:1; align-self:center; width:145px; height:165px; display:grid; place-items:center; clip-path:polygon(50% 0,95% 17%,88% 72%,50% 100%,12% 72%,5% 17%); background:linear-gradient(145deg,#c8f8ff,#4b6bff 60%,#18245d); color:#080d1b; font-size:66px; font-weight:1000; filter:drop-shadow(0 0 24px rgba(72,217,255,.3)); }
+    .card-bottom { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:end; gap:12px; }
+    .card-bottom strong { font-size:19px; }
+    .tag { color:var(--cyan); font-size:11px; letter-spacing:.14em; font-weight:900; }
+    section { padding:42px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:22px; }
+    h2 { font-size:clamp(26px,4vw,38px); letter-spacing:-.035em; margin:4px 0 0; }
+    .section-head p { color:var(--muted); margin:0; max-width:430px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .tile { padding:23px; background:linear-gradient(160deg,var(--panel),var(--panel2)); border:1px solid var(--line); border-radius:18px; }
+    .tile .icon { font-size:26px; }
+    .tile h3 { margin:12px 0 6px; font-size:18px; }
+    .tile p { color:var(--muted); margin:0; font-size:14px; }
+    .discord { display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; padding:30px; border:1px solid rgba(72,217,255,.28); border-radius:22px; background:linear-gradient(110deg,rgba(40,67,153,.35),rgba(16,22,38,.96)); }
+    .discord p { color:var(--muted); margin:8px 0 0; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+    .step { border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:14px; }
+    .step b { display:block; color:var(--text); margin-bottom:4px; }
+    .placeholder { border:1px dashed rgba(124,151,255,.4); border-radius:16px; padding:25px; color:var(--muted); text-align:center; }
+    footer { border-top:1px solid var(--line); margin-top:30px; padding:24px 0 36px; color:var(--muted); font-size:13px; }
+    footer .foot { display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    @media (max-width:760px) {
+      .nav { min-height:62px; }
+      .navlinks { display:none; }
+      .nav .btn { padding:10px 12px; font-size:12px; }
+      .brand { font-size:13px; letter-spacing:.04em; }
+      .crest { width:33px; height:37px; }
+      .hero { padding:46px 0 30px; }
+      .hero-grid { grid-template-columns:1fr; gap:24px; }
+      .hero-card { min-height:280px; }
+      .big-crest { width:118px; height:136px; font-size:54px; }
+      .lead { font-size:16px; }
+      .section-head { display:block; }
+      .section-head p { margin-top:9px; }
+      .grid3 { grid-template-columns:1fr; }
+      .discord { grid-template-columns:1fr; padding:23px; }
+      .discord .btn { width:100%; }
+      .steps { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="EVO PRO CLUB inicio"><span class="crest">E</span><span>EVO PRO CLUB</span></a>
+    <nav class="navlinks" aria-label="Navegación">
+      <a href="#club">El club</a><a href="#comunidad">Discord</a><a href="#plantilla">Plantilla</a><a href="#torneos">Torneos</a>
+    </nav>
+    <a class="btn" href="https://discord.gg/ahbZtKf7Y" target="_blank" rel="noopener">☻ Unirme al Discord ↗</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">FUT ROBLOX · CLUB COMPETITIVO</div>
+        <h1>EL JUEGO.<span>LA EVOLUCIÓN.</span></h1>
+        <p class="lead">Bienvenido a <strong>EVO PRO CLUB</strong>. Un club para competir, mejorar y construir una comunidad dentro de FUT. ¿Listo para entrar al campo?</p>
+        <div class="actions">
+          <a class="btn" href="https://discord.gg/ahbZtKf7Y" target="_blank" rel="noopener">Entrar al Discord ↗</a>
+          <a class="btn secondary" href="#club">Conocer el club ↓</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Emblema de EVO PRO CLUB">
+        <div class="tag">EST. · FUT COMMUNITY</div>
+        <div class="big-crest">E</div>
+        <div class="card-bottom"><div><strong>EVO PRO CLUB</strong><br><span style="color:var(--muted);font-size:13px">Más que un equipo. Una evolución.</span></div><span class="tag">EPC / 01</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="club">
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">NUESTRA IDENTIDAD</div><h2>Un club. Un objetivo.</h2></div><p>Entrena con el equipo, compite con respeto y demuestra tu nivel partido a partido.</p></div>
+      <div class="grid3">
+        <article class="tile"><div class="icon">⚽</div><h3>Competición</h3><p>Partidos, retos y encuentros para poner a prueba al equipo.</p></article>
+        <article class="tile"><div class="icon">🛡️</div><h3>Trabajo en equipo</h3><p>Comunicación, disciplina y apoyo entre todos los jugadores.</p></article>
+        <article class="tile"><div class="icon">📈</div><h3>Mejora constante</h3><p>Entrena, aprende jugadas y evoluciona con el club.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="comunidad">
+    <div class="wrap">
+      <div class="discord">
+        <div><div class="eyebrow">LA COMUNIDAD TE ESPERA</div><h2>Entra a nuestro Discord</h2><p>Consulta los anuncios, conoce a los jugadores y entérate de las próximas actividades del club.</p></div>
+        <a class="btn" href="https://discord.gg/ahbZtKf7Y" target="_blank" rel="noopener">ABRIR DISCORD ↗</a>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01 · Entra</b>Pulsa cualquiera de los botones de Discord.</div>
+        <div class="step"><b>02 · Lee las reglas</b>Revisa los canales y las indicaciones del servidor.</div>
+        <div class="step"><b>03 · Preséntate</b>Saluda y pregunta cómo unirte al equipo.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plantilla">
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">NUESTROS JUGADORES</div><h2>Plantilla del club</h2></div><p>Esta zona queda preparada para añadir titulares, suplentes y posiciones.</p></div>
+      <div class="placeholder">👥<br><strong>Próximamente: plantilla oficial</strong><br>Cuando tengas los nombres y posiciones, podremos añadirlos aquí.</div>
+    </div>
+  </section>
+
+  <section id="torneos">
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">EN EL CAMPO</div><h2>Torneos y noticias</h2></div><p>Publica aquí próximos partidos, resultados, fichajes y anuncios importantes.</p></div>
+      <div class="grid3">
+        <article class="tile"><div class="icon">🏆</div><h3>Próximos torneos</h3><p>Próximamente se anunciarán las competiciones del club.</p></article>
+        <article class="tile"><div class="icon">📣</div><h3>Anuncios</h3><p>Consulta Discord para conocer las noticias más recientes.</p></article>
+        <article class="tile"><div class="icon">✍️</div><h3>Pruebas y fichajes</h3><p>Pregunta en nuestro servidor cómo participar en las pruebas.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot"><span>© EVO PRO CLUB · Comunidad de FUT Roblox</span><a href="https://discord.gg/ahbZtKf7Y" target="_blank" rel="noopener">Discord oficial ↗</a></div>
+</footer>
+</body>
+</html>
